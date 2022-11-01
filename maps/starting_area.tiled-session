@@ -1,0 +1,55 @@
+{
+    "activeFile": "starter_area.tmx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/objects/starter_area/NPCs.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/objects/stater_area/starter_area_objects.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/grass_and_water.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 3
+        },
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/grass_and_water_tileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/start_area_interiors.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1.5
+        },
+        "starter_area.tmx": {
+            "scale": 5.003333333333333,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 120.21985343104598,
+                "y": 143.10459693537643
+            }
+        }
+    },
+    "openFiles": [
+        "starter_area.tmx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/grass_and_water.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/start_area_interiors.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/objects/starter_area/NPCs.tsx"
+    ],
+    "project": "",
+    "recentFiles": [
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/objects/starter_area/NPCs.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/start_area_interiors.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/grass_and_water.tsx",
+        "starter_area.tmx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/objects/stater_area/starter_area_objects.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/grass_and_water_tileset.tsx"
+    ]
+}

@@ -1,0 +1,110 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "starter_area.tmx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "C:/Users/mlaak/PycharmProjects/Tiled/data/tmx/practice.tmx": {
+            "scale": 0.2931640625,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 298.46768820786156,
+                "y": 644.6902065289808
+            }
+        },
+        "C:/Users/mlaak/PycharmProjects/Tiled/data/tsx/Objects.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/mlaak/PycharmProjects/Tiled/data/tsx/terrain_corner.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/mlaak/PycharmProjects/Tiled/data/tsx/terrain_edges.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/mlaak/PycharmProjects/Tiled/data/tsx/tiles.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/objects/starter_area/NPCs.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/objects/stater_area/starter_area_objects.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/grass_and_water.tsx": {
+            "dynamicWrapping": false
+        },
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/grass_and_water_tileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/interiors.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/start_area.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/start_area_interiors.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 2,
+            "scaleInEditor": 3
+        },
+        "hunting_area.tmx": {
+            "scale": 0.7505,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 799.4670219853431,
+                "y": 798.8007994670221
+            }
+        },
+        "starter_area.tmx": {
+            "scale": 3.499166666666666,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 119.74279590378663,
+                "y": 120.4572517266016
+            }
+        }
+    },
+    "last.imagePath": "C:/Users/mlaak/PycharmProjects/pokemon_game/graphics/starter_area",
+    "map.height": 30,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 8,
+    "map.tileWidth": 8,
+    "map.width": 30,
+    "openFiles": [
+        "starter_area.tmx",
+        "hunting_area.tmx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/objects/starter_area/NPCs.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/interiors.tsx"
+    ],
+    "project": "pokemon_game.tiled-project",
+    "recentFiles": [
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/interiors.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/objects/starter_area/NPCs.tsx",
+        "hunting_area.tmx",
+        "starter_area.tmx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/start_area_interiors.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/start_area.tsx",
+        "C:/Users/mlaak/PycharmProjects/Tiled/data/tmx/practice.tmx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/objects/stater_area/starter_area_objects.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/grass_and_water_tileset.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 8,
+        "width": 8
+    },
+    "tileset.type": 0
+}
