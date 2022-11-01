@@ -11,31 +11,72 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(pygame.image.load('graphics/player/player_front.png').convert_alpha(), size=(56, 84))
         self.rect = self.image.get_rect(bottomleft=position)
         self.direction = pygame.math.Vector2()
-        self.walk_speed = 3
-        self.run_speed = 0
+        self.speed = 3
         self.player_index = 0
 
         # player animation surfaces
-        self.player_front = pygame.transform.scale(pygame.image.load('graphics/player/player_front.png').convert_alpha(), size=(56, 84))
-        self.player_back = pygame.transform.scale(pygame.image.load('graphics/player/player_back.png').convert_alpha(), size=(56, 84))
-        self.player_right = pygame.transform.scale(pygame.image.load('graphics/player/player_right.png').convert_alpha(), size=(56, 84))
-        self.player_left = pygame.transform.scale(pygame.image.load('graphics/player/player_left.png').convert_alpha(), size=(56, 84))
+        self.player_front = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_front.png').convert_alpha(), size=(56, 84))
+        self.player_back = pygame.transform.scale(pygame.image.load('graphics/player/player_back.png').convert_alpha(),
+                                                  size=(56, 84))
+        self.player_right = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_right.png').convert_alpha(), size=(56, 84))
+        self.player_left = pygame.transform.scale(pygame.image.load('graphics/player/player_left.png').convert_alpha(),
+                                                  size=(56, 84))
+        self.player_run_left = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_run_left.png').convert_alpha(), size=(56, 84))
+        self.player_run_right = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_run_right.png').convert_alpha(), size=(56, 84))
 
-        player_walk_up_1 = pygame.transform.scale(pygame.image.load('graphics/player/player_walk_up_1.png').convert_alpha(), size=(56, 84))
-        player_walk_up_2 = pygame.transform.scale(pygame.image.load('graphics/player/player_walk_up_2.png').convert_alpha(), size=(56, 84))
+        # walking animations
+        player_walk_up_1 = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_walk_up_1.png').convert_alpha(), size=(56, 84))
+        player_walk_up_2 = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_walk_up_2.png').convert_alpha(), size=(56, 84))
         self.player_walk_up = [player_walk_up_1, player_walk_up_2]
 
-        player_walk_down_1 = pygame.transform.scale(pygame.image.load('graphics/player/player_walk_down_1.png').convert_alpha(), size=(56, 84))
-        player_walk_down_2 = pygame.transform.scale(pygame.image.load('graphics/player/player_walk_down_2.png').convert_alpha(), size=(56, 84))
+        player_walk_down_1 = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_walk_down_1.png').convert_alpha(), size=(56, 84))
+        player_walk_down_2 = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_walk_down_2.png').convert_alpha(), size=(56, 84))
         self.player_walk_down = [player_walk_down_1, player_walk_down_2]
 
-        player_walk_left_1 = pygame.transform.scale(pygame.image.load('graphics/player/player_walk_left_1.png').convert_alpha(), size=(56, 84))
-        player_walk_left_2 = pygame.transform.scale(pygame.image.load('graphics/player/player_walk_left_2.png').convert_alpha(), size=(56, 84))
+        player_walk_left_1 = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_walk_left_1.png').convert_alpha(), size=(56, 84))
+        player_walk_left_2 = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_walk_left_2.png').convert_alpha(), size=(56, 84))
         self.player_walk_left = [player_walk_left_1, self.player_left, player_walk_left_2, self.player_left]
 
-        player_walk_right_1 = pygame.transform.scale(pygame.image.load('graphics/player/player_walk_right_1.png').convert_alpha(), size=(56, 84))
-        player_walk_right_2 = pygame.transform.scale(pygame.image.load('graphics/player/player_walk_right_2.png').convert_alpha(), size=(56, 84))
+        player_walk_right_1 = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_walk_right_1.png').convert_alpha(), size=(56, 84))
+        player_walk_right_2 = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_walk_right_2.png').convert_alpha(), size=(56, 84))
         self.player_walk_right = [player_walk_right_1, self.player_right, player_walk_right_2, self.player_right]
+
+        # running animations
+        player_run_up_1 = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_run_up_1.png').convert_alpha(), size=(56, 84))
+        player_run_up_2 = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_run_up_2.png').convert_alpha(), size=(56, 84))
+        self.player_run_up = [player_run_up_1, player_run_up_2]
+
+        player_run_down_1 = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_run_down_1.png').convert_alpha(), size=(56, 84))
+        player_run_down_2 = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_run_down_2.png').convert_alpha(), size=(56, 84))
+        self.player_run_down = [player_run_down_1, player_run_down_2]
+
+        player_run_left_1 = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_run_left_1.png').convert_alpha(), size=(56, 84))
+        player_run_left_2 = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_run_left_2.png').convert_alpha(), size=(56, 84))
+        self.player_run_left = [player_run_left_1, self.player_run_left, player_run_left_2, self.player_run_left]
+
+        player_run_right_1 = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_run_right_1.png').convert_alpha(), size=(56, 84))
+        player_run_right_2 = pygame.transform.scale(
+            pygame.image.load('graphics/player/player_run_right_2.png').convert_alpha(), size=(56, 84))
+        self.player_run_right = [player_run_right_1, self.player_run_right, player_run_right_2, self.player_run_right]
 
     def input(self):
         keys = pygame.key.get_pressed()
@@ -55,7 +96,13 @@ class Player(pygame.sprite.Sprite):
             self.direction.x = 0
             self.direction.y = 0
 
+        if keys[pygame.K_LSHIFT]:
+            self.speed = 6
+        else:
+            self.speed = 3
+
     def animation(self):
+        keys = pygame.key.get_pressed()
         if event.type == pygame.KEYUP:
             pygame.event.clear()
             if event.key == pygame.K_UP and self.direction.x == 0 and self.direction.y == 0:
@@ -90,22 +137,47 @@ class Player(pygame.sprite.Sprite):
             if self.player_index >= len(self.player_walk_up):
                 self.player_index = 0
             self.image = self.player_walk_up[int(self.player_index)]
+        if keys[pygame.K_LSHIFT]:
+            if self.direction.x == 1 and self.direction.y == 0:
+                pygame.event.clear()
+                self.player_index += 0.12
+                if self.player_index >= len(self.player_run_right):
+                    self.player_index = 0
+                self.image = self.player_run_right[int(self.player_index)]
+            if self.direction.x == -1 and self.direction.y == 0:
+                pygame.event.clear()
+                self.player_index += 0.12
+                if self.player_index >= len(self.player_run_left):
+                    self.player_index = 0
+                self.image = self.player_run_left[int(self.player_index)]
+            if self.direction.y == 1 and self.direction.x == 0:
+                pygame.event.clear()
+                self.player_index += 0.08
+                if self.player_index >= len(self.player_run_down):
+                    self.player_index = 0
+                self.image = self.player_run_down[int(self.player_index)]
+            if self.direction.y == -1 and self.direction.x == 0:
+                pygame.event.clear()
+                self.player_index += 0.08
+                if self.player_index >= len(self.player_run_up):
+                    self.player_index = 0
+                self.image = self.player_run_up[int(self.player_index)]
 
     def collision(self):
         if pygame.sprite.spritecollide(self, obstacle_group, False) or pygame.sprite.spritecollide(self, npc_group, False):
             if self.direction.x < 0:
-                self.rect.x += 1 * self.walk_speed
+                self.rect.x += 1 * self.speed
             if self.direction.x > 0:
-                self.rect.x -= 1 * self.walk_speed
+                self.rect.x -= 1 * self.speed
             if self.direction.y < 0:
-                self.rect.y += 1 * self.walk_speed
+                self.rect.y += 1 * self.speed
             if self.direction.y > 0:
-                self.rect.y -= 1 * self.walk_speed
+                self.rect.y -= 1 * self.speed
 
     def update(self):
         self.collision()
         self.input()
-        self.rect.bottomleft += self.direction * self.walk_speed
+        self.rect.bottomleft += self.direction * self.speed
         self.animation()
 
 
@@ -169,14 +241,17 @@ class StarterArea:
         draw_map(start_floor, start_obstacles)
 
     def run(self):
+        prof_rowan_dialogue_rect = pygame.draw.rect(self.display, 'black', [7 * 64 - 10, 6 * 64 - 2, 84, 84])
         self.camera_group.custom_draw(self.player)
         self.camera_group.update()
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_KP_ENTER:
+            if event.key == pygame.K_KP_ENTER and self.player.rect.colliderect(prof_rowan_dialogue_rect):
                 if self.text_index >= len(prof_rowan_dialogue) - 0.1:
                     self.text_index = 0
-                self.text_index += 0.01
+                self.text_index += 0.008
                 text_box(prof_rowan_dialogue[int(self.text_index)])
+        else:
+            self.text_index = 0
 
 
 class Tile(pygame.sprite.Sprite):
@@ -251,9 +326,9 @@ while True:
                 create_map = True
     if start_active:
         if create_map:
-            screen.fill('black')
             start_area.create_map()
             create_map = False
+        screen.fill('black')
         start_area.run()
     else:
         screen.blit(intro_surf, intro_rect)
