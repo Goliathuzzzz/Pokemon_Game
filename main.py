@@ -196,6 +196,9 @@ class CameraGroup(pygame.sprite.Group):
         self.dirty_grass_group = dirty_grass_group
         self.sand_group = sand_group
         self.cave_sand_group = cave_sand_group
+        self.sa_entrance_group = sa_entrance_group
+        self.bt_entrance_group = bt_entrance_group
+        self.cave_entrance_group = cave_entrance_group
 
     # camera offset
         self.offset = pygame.math.Vector2()
@@ -222,6 +225,18 @@ class CameraGroup(pygame.sprite.Group):
 
         # draw entrances and exits
         for sprite in self.exit_group.sprites():
+            offset_pos = sprite.rect.topleft - self.offset
+            self.display.blit(sprite.image, offset_pos)
+
+        for sprite in self.sa_entrance_group.sprites():
+            offset_pos = sprite.rect.topleft - self.offset
+            self.display.blit(sprite.image, offset_pos)
+
+        for sprite in self.bt_entrance_group.sprites():
+            offset_pos = sprite.rect.topleft - self.offset
+            self.display.blit(sprite.image, offset_pos)
+
+        for sprite in self.cave_entrance_group.sprites():
             offset_pos = sprite.rect.topleft - self.offset
             self.display.blit(sprite.image, offset_pos)
 
@@ -315,6 +330,9 @@ class HunterArea:
         sand = self.map.get_layer_by_name('Sand')
         water = self.map.get_layer_by_name('Water')
         dirty_grass = self.map.get_layer_by_name('Dirty Grass')
+        sa_entrance = self.map.get_layer_by_name('SA Entrance')
+        bt_entrance = self.map.get_layer_by_name('BT Entrance')
+        cave_entrance = self.map.get_layer_by_name('Cave Entrance')
 
         for x, y, surf in floor.tiles():
             pos = (x * 32, y * 32)
@@ -339,6 +357,18 @@ class HunterArea:
         for x, y, surf in dirty_grass.tiles():
             pos = (x * 32, y * 32)
             Tile(position=pos, surface=surf, group=dirty_grass_group)
+
+        for x, y, surf in sa_entrance.tiles():
+            pos = (x * 32, y * 32)
+            Tile(position=pos, surface=surf, group=sa_entrance_group)
+
+        for x, y, surf in bt_entrance.tiles():
+            pos = (x * 32, y * 32)
+            Tile(position=pos, surface=surf, group=bt_entrance_group)
+
+        for x, y, surf in cave_entrance.tiles():
+            pos = (x * 32, y * 32)
+            Tile(position=pos, surface=surf, group=cave_entrance_group)
 
     def run(self):
         self.camera_group.custom_draw(self.player)
@@ -383,6 +413,9 @@ water_group = pygame.sprite.Group()
 dirty_grass_group = pygame.sprite.Group()
 sand_group = pygame.sprite.Group()
 cave_sand_group = pygame.sprite.Group()
+sa_entrance_group = pygame.sprite.Group()
+bt_entrance_group = pygame.sprite.Group()
+cave_entrance_group = pygame.sprite.Group()
 
 start_area = StarterArea((480, 500))
 hunter_area = HunterArea((0, 0))
@@ -425,6 +458,7 @@ while True:
             exit_group.empty()
             obstacle_group.empty()
             tile_group.empty()
+            npc_group.empty()
             camera_group.empty()
             start_active = False
             create_map = True
