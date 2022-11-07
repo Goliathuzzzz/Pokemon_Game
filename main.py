@@ -273,6 +273,7 @@ class StarterArea:
     def create_map(self):
         start_floor = self.map.get_layer_by_name('Floor')
         start_obstacles = self.map.get_layer_by_name('Furniture and Walls')
+        exit_tiles = self.map.get_layer_by_name('Exit')
 
         for x, y, surf in start_floor.tiles():
             pos = (x * 32, y * 32)
@@ -281,6 +282,10 @@ class StarterArea:
         for x, y, surface in start_obstacles.tiles():
             pos = (x * 32, y * 32)
             Tile(position=pos, surface=surface, group=obstacle_group)
+
+        for x, y, surface in exit_tiles.tiles():
+            pos = (x * 32, y * 32)
+            Tile(position=pos, surface=surface, group=exit_group)
 
     def run(self):
         prof_rowan_dialogue_rect = pygame.draw.rect(self.display, 'black', [7 * 64 - 10, 5 * 64 - 2, 84, 84])
@@ -380,6 +385,7 @@ sand_group = pygame.sprite.Group()
 cave_sand_group = pygame.sprite.Group()
 
 start_area = StarterArea((480, 500))
+hunter_area = HunterArea((0, 0))
 
 start_active = False
 hunt_active = False
@@ -387,12 +393,6 @@ create_map = False
 
 # camera setup
 camera_group = CameraGroup()
-
-# player
-x = 0
-y = 0
-player = Player(position=(x, y), group=camera_group)
-
 
 # intro screen
 intro_surf = pygame.image.load('graphics/intro_screen/intro_background.png').convert()
@@ -414,14 +414,30 @@ while True:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 start_active = True
                 create_map = True
+
     if start_active:
         if create_map:
             start_area.create_map()
             create_map = False
         screen.fill('black')
         start_area.run()
+        if pygame.sprite.spritecollide(start_area.player, exit_group, False):
+            exit_group.empty()
+            obstacle_group.empty()
+            tile_group.empty()
+            camera_group.empty()
+            start_active = False
+            create_map = True
+            hunt_active = True
+            hunter_area = HunterArea(pos=(10 * 32, 9 * 32))
 
-        if player.rect.collidepoint()
+    elif hunt_active:
+        if create_map:
+            hunter_area.create_map()
+            create_map = False
+        screen.fill('black')
+        hunter_area.run()
+
     else:
         screen.blit(intro_surf, intro_rect)
         screen.blit(game_title_surf, game_title_rect)
