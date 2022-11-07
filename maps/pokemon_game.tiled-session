@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "starter_area.tmx",
+    "activeFile": "hunting_area.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -38,8 +38,34 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/Cave.tmx": {
+            "scale": 3,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 93.33333333333333,
+                "y": 56.83333333333334
+            }
+        },
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/Sand_cave.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 5.5
+        },
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/desert_and_cave.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 5.5
+        },
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/dirty_grass.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 5.5
+        },
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/exit_and_entrance.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 5.5
+        },
         "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/grass_and_water.tsx": {
-            "dynamicWrapping": false
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 5.5
         },
         "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/grass_and_water_tileset.tsx": {
             "scaleInDock": 1,
@@ -61,45 +87,55 @@
             "scaleInEditor": 3
         },
         "hunting_area.tmx": {
-            "scale": 0.7505,
+            "expandedGroupLayers": [
+                11,
+                9
+            ],
+            "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 799.4670219853431,
-                "y": 798.8007994670221
+                "x": 179.33333333333331,
+                "y": 57.666666666666686
             }
         },
         "starter_area.tmx": {
             "scale": 3.499166666666666,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 119.74279590378663,
-                "y": 120.4572517266016
+                "x": 120.31436056203862,
+                "y": 119.88568706834963
             }
         }
     },
-    "last.imagePath": "C:/Users/mlaak/PycharmProjects/pokemon_game/graphics/starter_area",
-    "map.height": 30,
+    "last.imagePath": "C:/Users/mlaak/PycharmProjects/pokemon_game/graphics/hunting_area",
+    "map.fixedSize": true,
+    "map.height": 10,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 8,
     "map.tileWidth": 8,
-    "map.width": 30,
+    "map.width": 10,
     "openFiles": [
-        "starter_area.tmx",
-        "hunting_area.tmx",
-        "C:/Users/mlaak/PycharmProjects/pokemon_game/objects/starter_area/NPCs.tsx",
-        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/interiors.tsx"
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/grass_and_water.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/exit_and_entrance.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/dirty_grass.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/desert_and_cave.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/Sand_cave.tsx",
+        "hunting_area.tmx"
     ],
     "project": "pokemon_game.tiled-project",
     "recentFiles": [
-        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/interiors.tsx",
-        "C:/Users/mlaak/PycharmProjects/pokemon_game/objects/starter_area/NPCs.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/grass_and_water.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/exit_and_entrance.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/dirty_grass.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/desert_and_cave.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/Sand_cave.tsx",
         "hunting_area.tmx",
         "starter_area.tmx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/interiors.tsx",
+        "C:/Users/mlaak/PycharmProjects/pokemon_game/objects/starter_area/NPCs.tsx",
         "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/start_area_interiors.tsx",
         "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/start_area.tsx",
-        "C:/Users/mlaak/PycharmProjects/Tiled/data/tmx/practice.tmx",
-        "C:/Users/mlaak/PycharmProjects/pokemon_game/objects/stater_area/starter_area_objects.tsx",
-        "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/grass_and_water_tileset.tsx"
+        "C:/Users/mlaak/PycharmProjects/Tiled/data/tmx/practice.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

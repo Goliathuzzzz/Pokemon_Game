@@ -189,7 +189,13 @@ class CameraGroup(pygame.sprite.Group):
     # groups
         self.tile_group = tile_group
         self.obstacle_group = obstacle_group
+        self.exit_group = exit_group
         self.npc_group = npc_group
+        self.grass_group = grass_group
+        self.water_group = water_group
+        self.dirty_grass_group = dirty_grass_group
+        self.sand_group = sand_group
+        self.cave_sand_group = cave_sand_group
 
     # camera offset
         self.offset = pygame.math.Vector2()
@@ -214,6 +220,36 @@ class CameraGroup(pygame.sprite.Group):
             offset_pos = sprite.rect.topleft - self.offset
             self.display.blit(sprite.image, offset_pos)
 
+        # draw entrances and exits
+        for sprite in self.exit_group.sprites():
+            offset_pos = sprite.rect.topleft - self.offset
+            self.display.blit(sprite.image, offset_pos)
+
+        # draw grass
+        for sprite in self.grass_group.sprites():
+            offset_pos = sprite.rect.topleft - self.offset
+            self.display.blit(sprite.image, offset_pos)
+
+        # draw water
+        for sprite in self.water_group.sprites():
+            offset_pos = sprite.rect.topleft - self.offset
+            self.display.blit(sprite.image, offset_pos)
+
+        # draw dirty grass
+        for sprite in self.dirty_grass_group.sprites():
+            offset_pos = sprite.rect.topleft - self.offset
+            self.display.blit(sprite.image, offset_pos)
+
+        # draw sand
+        for sprite in self.sand_group.sprites():
+            offset_pos = sprite.rect.topleft - self.offset
+            self.display.blit(sprite.image, offset_pos)
+
+        # draw cave sand
+        for sprite in self.cave_sand_group.sprites():
+            offset_pos = sprite.rect.topleft - self.offset
+            self.display.blit(sprite.image, offset_pos)
+
         # draw NPCs
         for sprite in self.npc_group.sprites():
             offset_pos = sprite.rect.topleft - self.offset
@@ -233,25 +269,75 @@ class StarterArea:
         self.player = Player(position=pos, group=self.camera_group)
         self.prof_rowan = StillNPC(surface=pygame.image.load('graphics/NPCs/prof_rowan/prof_rowan_front.png').convert_alpha(), position=(7 * 64, 6 * 64), group=npc_group)
         self.text_index = 0
-        self.update_text = False
 
     def create_map(self):
         start_floor = self.map.get_layer_by_name('Floor')
         start_obstacles = self.map.get_layer_by_name('Furniture and Walls')
-        draw_map(start_floor, start_obstacles)
+
+        for x, y, surf in start_floor.tiles():
+            pos = (x * 32, y * 32)
+            Tile(position=pos, surface=surf, group=tile_group)
+
+        for x, y, surface in start_obstacles.tiles():
+            pos = (x * 32, y * 32)
+            Tile(position=pos, surface=surface, group=obstacle_group)
 
     def run(self):
-        prof_rowan_dialogue_rect = pygame.draw.rect(self.display, 'black', [7 * 64 - 10, 6 * 64 - 2, 84, 84])
+        prof_rowan_dialogue_rect = pygame.draw.rect(self.display, 'black', [7 * 64 - 10, 5 * 64 - 2, 84, 84])
         self.camera_group.custom_draw(self.player)
         self.camera_group.update()
-        if event.type == pygame.KEYDOWN:
+        if event.type == pygame.KEYUP:
             if event.key == pygame.K_KP_ENTER and self.player.rect.colliderect(prof_rowan_dialogue_rect):
                 if self.text_index >= len(prof_rowan_dialogue) - 0.1:
                     self.text_index = 0
                 self.text_index += 0.008
                 text_box(prof_rowan_dialogue[int(self.text_index)])
         else:
-            self.text_index = 0
+            self.text_index += 0
+
+
+class HunterArea:
+    def __init__(self, pos):
+        self.display = pygame.display.get_surface()
+        self.map = load_pygame('maps/hunting_area.tmx')
+        self.camera_group = CameraGroup()
+        self.player = Player(position=pos, group=self.camera_group)
+
+    def create_map(self):
+        floor = self.map.get_layer_by_name('Floor')
+        grass = self.map.get_layer_by_name('Grass')
+        obstacles = self.map.get_layer_by_name('Objects')
+        sand = self.map.get_layer_by_name('Sand')
+        water = self.map.get_layer_by_name('Water')
+        dirty_grass = self.map.get_layer_by_name('Dirty Grass')
+
+        for x, y, surf in floor.tiles():
+            pos = (x * 32, y * 32)
+            Tile(position=pos, surface=surf, group=tile_group)
+
+        for x, y, surf in grass.tiles():
+            pos = (x * 32, y * 32)
+            Tile(position=pos, surface=surf, group=grass_group)
+
+        for x, y, surf in obstacles.tiles():
+            pos = (x * 32, y * 32)
+            Tile(position=pos, surface=surf, group=obstacle_group)
+
+        for x, y, surf in sand.tiles():
+            pos = (x * 32, y * 32)
+            Tile(position=pos, surface=surf, group=sand_group)
+
+        for x, y, surf in water.tiles():
+            pos = (x * 32, y * 32)
+            Tile(position=pos, surface=surf, group=water_group)
+
+        for x, y, surf in dirty_grass.tiles():
+            pos = (x * 32, y * 32)
+            Tile(position=pos, surface=surf, group=dirty_grass_group)
+
+    def run(self):
+        self.camera_group.custom_draw(self.player)
+        self.camera_group.update()
 
 
 class Tile(pygame.sprite.Sprite):
@@ -266,16 +352,6 @@ class StillNPC(pygame.sprite.Sprite):
         super().__init__(group)
         self.image = pygame.transform.scale(surface, size=(64, 80)).convert_alpha()
         self.rect = self.image.get_rect(bottomleft=position)
-
-
-def draw_map(layer1, layer2):
-    for x, y, surf in layer1.tiles():
-        pos = (x * 32, y * 32)
-        Tile(position=pos, surface=surf, group=tile_group)
-
-    for x, y, surface in layer2.tiles():
-        pos = (x * 32, y * 32)
-        Tile(position=pos, surface=surface, group=obstacle_group)
 
 
 def text_box(text):
@@ -294,14 +370,28 @@ clock = pygame.time.Clock()
 
 # maps and groups
 tile_group = pygame.sprite.Group()
-npc_group = pygame.sprite.GroupSingle()
+npc_group = pygame.sprite.Group()
 obstacle_group = pygame.sprite.Group()
+exit_group = pygame.sprite.Group()
+grass_group = pygame.sprite.Group()
+water_group = pygame.sprite.Group()
+dirty_grass_group = pygame.sprite.Group()
+sand_group = pygame.sprite.Group()
+cave_sand_group = pygame.sprite.Group()
+
 start_area = StarterArea((480, 500))
+
 start_active = False
+hunt_active = False
 create_map = False
 
 # camera setup
 camera_group = CameraGroup()
+
+# player
+x = 0
+y = 0
+player = Player(position=(x, y), group=camera_group)
 
 
 # intro screen
@@ -330,6 +420,8 @@ while True:
             create_map = False
         screen.fill('black')
         start_area.run()
+
+        if player.rect.collidepoint()
     else:
         screen.blit(intro_surf, intro_rect)
         screen.blit(game_title_surf, game_title_rect)
