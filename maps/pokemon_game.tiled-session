@@ -40,7 +40,7 @@
         },
         "C:/Users/mlaak/PycharmProjects/pokemon_game/tilesets/Cave.tmx": {
             "scale": 3,
-            "selectedLayer": 2,
+            "selectedLayer": 3,
             "viewCenter": {
                 "x": 104,
                 "y": 104.16666666666667
@@ -86,16 +86,24 @@
             "scaleInDock": 2,
             "scaleInEditor": 3
         },
+        "Cave.tmx": {
+            "scale": 3,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 104,
+                "y": 104.16666666666667
+            }
+        },
         "hunting_area.tmx": {
             "expandedGroupLayers": [
                 11,
                 9
             ],
-            "scale": 1.5,
-            "selectedLayer": 5,
+            "scale": 3,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 178,
-                "y": 598.3333333333333
+                "x": 363,
+                "y": 450.5
             }
         },
         "starter_area.tmx": {

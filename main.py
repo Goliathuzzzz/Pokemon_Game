@@ -375,6 +375,40 @@ class HunterArea:
         self.camera_group.update()
 
 
+class Cave:
+    def __init__(self, pos):
+        self.display = pygame.display.get_surface()
+        self.map = load_pygame('maps/Cave.tmx')
+        self.camera_group = CameraGroup()
+        self.player = Player(position=pos, group=self.camera_group)
+
+    def create_map(self):
+        floor = self.map.get_layer_by_name('Floor')
+        cave_sand = self.map.get_layer_by_name('Cave Sand')
+        objects = self.map.get_layer_by_name('Objects')
+        exit = self.map.get_layer_by_name('Exit')
+
+        for x, y, surf in floor.tiles():
+            pos = (x * 32, y * 32)
+            Tile(position=pos, surface=surf, group=tile_group)
+
+        for x, y, surf in cave_sand.tiles():
+            pos = (x * 32, y * 32)
+            Tile(position=pos, surface=surf, group=cave_sand_group)
+
+        for x, y, surf in objects.tiles():
+            pos = (x * 32, y * 32)
+            Tile(position=pos, surface=surf, group=obstacle_group)
+
+        for x, y, surf in exit.tiles():
+            pos = (x * 32, y * 32)
+            Tile(position=pos, surface=surf, group=exit_group)
+
+    def run(self):
+        self.camera_group.custom_draw(self.player)
+        self.camera_group.update()
+
+
 class Tile(pygame.sprite.Sprite):
     def __init__(self, position, surface, group):
         super().__init__(group)
@@ -416,16 +450,23 @@ cave_sand_group = pygame.sprite.Group()
 sa_entrance_group = pygame.sprite.Group()
 bt_entrance_group = pygame.sprite.Group()
 cave_entrance_group = pygame.sprite.Group()
+camera_group = CameraGroup()
 
 start_area = StarterArea((480, 500))
 hunter_area = HunterArea((0, 0))
+cave = Cave((0, 0))
+
+start_area_groups = [obstacle_group, tile_group, exit_group, npc_group, camera_group]
+
+hunter_area_groups = [obstacle_group, tile_group, npc_group, camera_group, sand_group, cave_entrance_group,
+                      bt_entrance_group, sa_entrance_group, water_group, grass_group, dirty_grass_group]
+
+cave_groups = [obstacle_group, tile_group, exit_group, npc_group, camera_group, cave_sand_group]
 
 start_active = False
 hunt_active = False
+cave_active = False
 create_map = False
-
-# camera setup
-camera_group = CameraGroup()
 
 # intro screen
 intro_surf = pygame.image.load('graphics/intro_screen/intro_background.png').convert()
@@ -455,11 +496,8 @@ while True:
         screen.fill('black')
         start_area.run()
         if pygame.sprite.spritecollide(start_area.player, exit_group, False):
-            exit_group.empty()
-            obstacle_group.empty()
-            tile_group.empty()
-            npc_group.empty()
-            camera_group.empty()
+            for group in start_area_groups:
+                group.empty()
             start_active = False
             create_map = True
             hunt_active = True
@@ -471,6 +509,34 @@ while True:
             create_map = False
         screen.fill('black')
         hunter_area.run()
+        if pygame.sprite.spritecollide(hunter_area.player, cave_entrance_group, False):
+            for group in hunter_area_groups:
+                group.empty()
+            hunt_active = False
+            create_map = True
+            cave_active = True
+            cave = Cave(pos=(12 * 32, 24 * 32))
+        if pygame.sprite.spritecollide(hunter_area.player, sa_entrance_group, False):
+            for group in hunter_area_groups:
+                group.empty()
+            hunt_active = False
+            create_map = True
+            start_active = True
+            start_area = StarterArea(pos=(14 * 32, 27 * 32))
+
+    elif cave_active:
+        if create_map:
+            cave.create_map()
+            create_map = False
+        screen.fill('black')
+        cave.run()
+        if pygame.sprite.spritecollide(cave.player, exit_group, False):
+            for group in cave_groups:
+                group.empty()
+            cave_active = False
+            create_map = True
+            hunt_active = True
+            hunter_area = HunterArea(pos=(45 * 32, 68 * 32))
 
     else:
         screen.blit(intro_surf, intro_rect)
