@@ -424,11 +424,14 @@ class StillNPC(pygame.sprite.Sprite):
 
 
 def text_box(text):
-    box = pygame.draw.rect(screen, 'white', [0, 580, 600, 60])
+    box = pygame.image.load('graphics/other/Chatbox.png')
+    box_surf = pygame.transform.scale(box, size=(550, 60)).convert_alpha()
+    box_rect = box_surf.get_rect(topleft=(0, 580))
     text_font = pygame.font.Font('fonts/Roboto-Black.ttf', 20)
     text_surf = text_font.render(text, True, 'black').convert_alpha()
-    text_rect = text_surf.get_rect(topleft=(10, 600))
-    return box, screen.blit(text_surf, text_rect)
+    text_rect = text_surf.get_rect(topleft=(15, 600))
+    screen.blit(box_surf, box_rect)
+    screen.blit(text_surf, text_rect)
 
 
 # init pygame
