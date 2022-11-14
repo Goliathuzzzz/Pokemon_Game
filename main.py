@@ -1,5 +1,6 @@
 import sys
 import pygame
+import spritesheet as ss
 from pytmx.util_pygame import load_pygame
 from settings import *
 from dialogue import *
@@ -407,6 +408,14 @@ class Cave:
     def run(self):
         self.camera_group.custom_draw(self.player)
         self.camera_group.update()
+
+
+class Menu:
+    def __init__(self):
+        super().__init__()
+        menu = pygame.image.load('graphics/other/Menu.png').convert()
+        self.menu_surface = pygame.transform.scale(menu, (960, 640))
+        self.menu_rect = self.menu_surface.get_rect(topleft=(0, 0))
 
 
 class Tile(pygame.sprite.Sprite):
