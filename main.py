@@ -418,6 +418,14 @@ class Menu:
         self.menu_rect = self.menu_surface.get_rect(topleft=(0, 0))
 
 
+class WildBattle:
+    def __init__(self, filename):
+        self.display = pygame.display.get_surface()
+        self.cameragroup = CameraGroup()
+        background = pygame.image.load(filename)
+        self.background = pygame.transform.scale(background, size=(width, height))
+
+
 class Tile(pygame.sprite.Sprite):
     def __init__(self, position, surface, group):
         super().__init__(group)

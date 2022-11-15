@@ -31,9 +31,4 @@ class SpriteSheet(object):
         return self.images_at(tups)
 
 
-test = SpriteSheet('graphics/pokemon/gen1/Gen 1 sheet.png', '#fefeff')
-test_image = test.image_at((5, 5, 64, 64))
-test_image_rect = test_image.get_rect(topleft=(0, 0))
-test_images = []
-
 
